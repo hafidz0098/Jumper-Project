@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class PlatformDestroy : MonoBehaviour
 {
-    float timer;
+    bool onScreen;
     // Start is called before the first frame update
     void Start()
     {
-        
+        onScreen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > 25)
-        {
+
+    }
+
+    void OnBecameVisible()
+    {
+        onScreen = true;
+    }
+
+    void OnBecameInvisible()
+    {
+        if(onScreen)
             Destroy(gameObject);
-        }
     }
 }
